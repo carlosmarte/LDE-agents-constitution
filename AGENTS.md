@@ -19,7 +19,7 @@ articles/
 ```
 
 - `<X>` is the article's letter: one uppercase letter, `A` to `Z`, assigned in alphabetical order. A letter MUST NOT be reused or reassigned once used, even if the article is repealed.
-- `<name>` is lowercase kebab-case, for example `A-repository-cloning`.
+- `<name>` is lowercase kebab-case, for example `A-repository-management`.
 - All five entries MUST exist. An empty folder holds a `.gitkeep` file.
 - Content MUST NOT be placed directly in `articles/` as loose files.
 
