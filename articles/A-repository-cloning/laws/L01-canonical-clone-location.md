@@ -1,6 +1,6 @@
-# I-L01 — Canonical clone location
+# A-L01 — Canonical clone location
 
-**Enforces:** I.1.1
+**Enforces:** A.1.1
 
 The clone root is:
 
@@ -19,4 +19,4 @@ A repository's canonical location is `/Users/Shared/agent/repos/clone/<ORG>/<rep
 | `git@github.com:octo-org/my-service.git` | `/Users/Shared/agent/repos/clone/octo-org/my-service` |
 | `https://github.com/octo-org/my-service/tree/main` | `/Users/Shared/agent/repos/clone/octo-org/my-service` |
 
-**Test:** for each clone under the clone root, the path relative to the clone root equals `<ORG>/<repo>` of its `origin` remote. [I-P02](../procedures/P02-check-clone-locations.sh) checks this.
+**Test:** for each clone under the clone root, the path relative to the clone root equals `<ORG>/<repo>` of its `origin` remote. [A-P02](../procedures/P02-check-clone-locations.sh) checks this.

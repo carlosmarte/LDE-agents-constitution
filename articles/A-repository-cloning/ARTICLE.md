@@ -1,4 +1,4 @@
-# Article I — Repository Cloning
+# Article A — Repository Cloning
 
 **Status:** Adopted
 **Applies to:** Every AI agent, assistant, automation, or tool that clones a Git repository from GitHub on this machine.

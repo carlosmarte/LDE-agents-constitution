@@ -10,7 +10,7 @@ Every article is a folder under `articles/`:
 
 ```
 articles/
-  <NN>-<name>/
+  <X>-<name>/
     ARTICLE.md        # the article: sections > clauses
     Definitions.md    # terms specific to this article
     laws/             # rules that enforce the article
@@ -18,10 +18,18 @@ articles/
     amendments/       # record of how the article was added or changed
 ```
 
-- `<NN>` is a two-digit number assigned in order (`01`, `02`, …). It MUST NOT be reused or renumbered once used, even if the article is repealed.
-- `<name>` is lowercase kebab-case, for example `01-repository-cloning`.
+- `<X>` is the article's letter: one uppercase letter, `A` to `Z`, assigned in alphabetical order. A letter MUST NOT be reused or reassigned once used, even if the article is repealed.
+- `<name>` is lowercase kebab-case, for example `A-repository-cloning`.
 - All five entries MUST exist. An empty folder holds a `.gitkeep` file.
 - Content MUST NOT be placed directly in `articles/` as loose files.
+
+### The 26-article limit
+
+The constitution is the base, not the rulebook. It MUST NOT grow past 26 articles, one per letter. The limit is deliberate: it keeps the base small enough for any agent to read in full, and it pushes detail into laws and procedures, where it belongs.
+
+- Before adding an article, check whether the idea fits as a law or a clause in an existing article. Prefer that.
+- Repealed articles keep their letter, so they count toward the 26.
+- When all 26 letters are used, a new article is only possible by merging existing articles. A merge is recorded as an amendment of each article involved.
 
 ## 2. What goes where
 
@@ -37,10 +45,18 @@ articles/
 
 Every rule MUST be traceable to the article it serves.
 
-- **Clause:** `<Article>.<Section>.<Clause>`, with the article as a Roman numeral matching its folder number (`01` = `I`) and section and clause in Arabic numerals, e.g. `I.3.2` = Article I, Section 3, Clause 2.
-- **Law:** file name `laws/L<NN>-<name>.md`, cited as `I-L01`. Its first line after the title MUST be `**Enforces:** I.<s>.<c>`.
-- **Procedure:** file name `procedures/P<NN>-<name>.<ext>`, cited as `I-P01`. A how-to starts with `**Implements:** I-L<NN>`; a script carries the same line as a comment near the top.
-- **Amendment:** file name `amendments/A<NNNN>-<name>.md`, cited as `I-A0001`.
+| Kind | File name | Cited as | Example |
+|---|---|---|---|
+| Article | `articles/<X>-<name>/ARTICLE.md` | `<X>` | `A` = Article A |
+| Clause | — | `<X>.<section>.<clause>` | `A.3.2` = Article A, Section 3, Clause 2 |
+| Law | `laws/L<NN>-<name>.md` | `<X>-L<NN>` | `A-L01` |
+| Procedure | `procedures/P<NN>-<name>.<ext>` | `<X>-P<NN>` | `A-P01` |
+| Amendment | `amendments/<X><n>-<name>.md` | `<X><n>` | `A1` = Article A's first amendment |
+
+- A law's first line after the title MUST be `**Enforces:** <X>.<s>.<c>`.
+- A how-to procedure starts with `**Implements:** <X>-L<NN>`; a script carries the same line as a comment near the top.
+- Amendment numbers start at 1 and count up with no padding: `A1`, `A2`, … `A10`. The article's adoption is always `<X>1`.
+- "Article A as of A3" means the article with amendments `A1` to `A3` applied.
 
 ## 4. Precedence
 
@@ -59,7 +75,7 @@ To shape a rough idea into a new article or an amendment, follow [.claude/skills
 Every change to an `ARTICLE.md` or a law MUST include a new amendment record in the same commit, with:
 
 ```markdown
-# A<NNNN> — <short title>
+# <X><n> — <short title>
 
 - **Date:** YYYY-MM-DD
 - **Status:** Proposed | Adopted | Repealed
@@ -69,7 +85,7 @@ Every change to an `ARTICLE.md` or a law MUST include a new amendment record in 
 <why the change was needed>
 ```
 
-- Adding a new article means creating its folder with all five entries, an amendment `A0001` that records its adoption, and a row in the articles table in [README.md](README.md).
+- Adding a new article means taking the next unused letter, creating its folder with all five entries, an amendment `<X>1` that records its adoption, and a row in the articles table in [README.md](README.md).
 - Typo and formatting fixes that do not change meaning do not need an amendment.
 - Repealed articles and laws stay in place, marked `**Status:** Repealed`, so their citations still resolve.
 
@@ -80,4 +96,5 @@ Every change to an `ARTICLE.md` or a law MUST include a new amendment record in 
 - [ ] Every procedure has an `Implements:` line pointing to a real law.
 - [ ] Every meaning-changing edit has a new amendment record.
 - [ ] The README articles table lists every article.
-- [ ] No citation number was reused or renumbered.
+- [ ] There are at most 26 articles, each with its own letter.
+- [ ] No article letter or citation number was reused or reassigned.

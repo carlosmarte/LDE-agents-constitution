@@ -1,6 +1,6 @@
-# I-L02 — Create parent directories
+# A-L02 — Create parent directories
 
-**Enforces:** I.2.1
+**Enforces:** A.2.1
 
 Before cloning, an agent MUST run the equivalent of:
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# I-P02 — Check that every clone under the clone root is at its canonical location.
-# Implements: I-L01
+# A-P02 — Check that every clone under the clone root is at its canonical location.
+# Implements: A-L01
 #
 # Usage: P02-check-clone-locations.sh [clone-root]
 #   Exits 0 when every clone is in place, 1 when any is not. Read-only.

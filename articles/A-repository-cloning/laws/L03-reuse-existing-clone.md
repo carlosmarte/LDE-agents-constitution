@@ -1,6 +1,6 @@
-# I-L03 — Reuse an existing clone
+# A-L03 — Reuse an existing clone
 
-**Enforces:** I.3.1
+**Enforces:** A.3.1
 
 If `<canonical location>/.git` exists, the agent MUST:
 

@@ -1,6 +1,6 @@
-# I-L04 — Preserve uncommitted changes
+# A-L04 — Preserve uncommitted changes
 
-**Enforces:** I.3.2
+**Enforces:** A.3.2
 
 Before any command that could change files in an existing clone (`pull`, `checkout`, `switch`, `reset`, `rebase`, `merge`, `stash`, `clean`), the agent MUST run `git status --porcelain`. If it prints anything, the agent MUST:
 

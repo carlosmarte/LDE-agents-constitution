@@ -23,14 +23,14 @@ Finding facts is your job, never the user's. Before asking anything, read:
 
 When there are many articles, send a sub-agent to do this search and keep only its conclusion.
 
-Then give a verdict, with citations (`I.3.2`, `I-L04`, `I-A0001`) as evidence:
+Then give a verdict, with citations (`A.3.2`, `A-L04`, `A1`) as evidence:
 
 | Verdict | Meaning | What happens next |
 |---|---|---|
 | **Exists** | An existing clause or law already requires this. | Show the citation. Ask whether the user still sees a gap. If not, stop. |
 | **Partial** | An article covers part of it. | Default to an amendment of that article, not a new one. |
 | **Conflicts** | It contradicts an existing clause or law. | Name the conflict. The user must choose: change the idea, or amend or repeal the existing rule. |
-| **New** | Nothing covers it. | Proceed to Step 3 with a new article in mind. |
+| **New** | Nothing covers it. | Proceed to Step 3 with a new article in mind. Say how many of the 26 letters are left. If none are, the only way to add it is to merge existing articles, so make that the first question of Step 4. |
 
 Also check the idea against agent instruction files the user points you to (for example a global `CLAUDE.md`), and say if the idea is already a personal preference there that this would make binding for every agent.
 
@@ -38,7 +38,7 @@ Also check the idea against agent instruction files the user points you to (for 
 
 Before the interview, give a short, honest critique. Include only what applies:
 
-- **Level.** Is this a constitutional principle (an article), a concrete rule (a law under an existing article), or just a how-to (a procedure)? Most ideas are smaller than an article.
+- **Level.** Is this a constitutional principle (an article), a concrete rule (a law under an existing article), or just a how-to (a procedure)? Most ideas are smaller than an article. Articles are capped at 26, one per letter, so a new article must earn a letter that can never be reused.
 - **Testable.** Could someone check whether an agent followed it? If not, what would make it checkable?
 - **Scope.** Which agents, tools, sessions, and situations does it bind? What is deliberately left out?
 - **Failure modes.** Name concrete scenarios where it breaks, is ambiguous, or does harm. Invent edge cases.
@@ -73,7 +73,7 @@ Work through these branches, skipping any that are already settled:
 5. **Procedures:** scripts or how-tos that carry out or check a law. Which laws need a check script?
 6. **Definitions:** terms that need a precise meaning. Challenge vague or overloaded words immediately ("you said 'repo': the remote, or the local clone?"), and flag any term another article already defines differently.
 7. **Exceptions and overrides:** what the user may override, and for how long.
-8. **Name and number:** folder name `<NN>-<kebab-name>`; the next unused number from `articles/`.
+8. **Letter and name:** folder name `<X>-<kebab-name>`, where `<X>` is the next unused letter in `articles/`.
 
 Decisions are the user's; facts are yours. Never ask the user something you could find by reading the repository or the machine.
 
@@ -87,8 +87,8 @@ When the frontier is empty, show a summary: the verdict, the clauses, the laws w
 
 Follow AGENTS.md exactly:
 
-- **New article:** create `articles/<NN>-<name>/` with `ARTICLE.md`, `Definitions.md`, `laws/`, `procedures/`, and `amendments/A0001-adopt-article.md`. Put `.gitkeep` in any empty folder. Add a row to the articles table in README.md.
-- **Amendment:** change the existing files and add the next `amendments/A<NNNN>-<name>.md` record, listing every clause and law changed.
+- **New article:** create `articles/<X>-<name>/` with `ARTICLE.md`, `Definitions.md`, `laws/`, `procedures/`, and `amendments/<X>1-adopt-article.md`. Put `.gitkeep` in any empty folder. Add a row to the articles table in README.md.
+- **Amendment:** change the existing files and add the next `amendments/<X><n>-<name>.md` record (for example `A3` after `A2`), listing every clause and law changed.
 - **Scripts:** make them executable, and run them against at least one passing and one failing case before reporting them done.
 
 Then run the AGENTS.md checklist, report each item's result, and list the files written. Do not commit or push unless the user asks.
