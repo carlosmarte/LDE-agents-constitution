@@ -54,6 +54,8 @@ If two parts of an article disagree, the higher one wins and the lower one MUST 
 
 ## 5. Changing the constitution
 
+To shape a rough idea into a new article or an amendment, follow [.claude/skills/critique-article/SKILL.md](.claude/skills/critique-article/SKILL.md) (`/critique-article` in Claude Code). It checks whether the constitution already covers the idea, then interviews the user before writing anything.
+
 Every change to an `ARTICLE.md` or a law MUST include a new amendment record in the same commit, with:
 
 ```markdown
