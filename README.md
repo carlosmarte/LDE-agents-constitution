@@ -16,4 +16,4 @@ Articles are lettered `A` to `Z`, so the constitution can never have more than 2
 
 | Letter | Article | Summary |
 |---|---------|---------|
-| A | [Repository Management](articles/A-repository-management/ARTICLE.md) | How agents manage Git repositories for local development. Today: clone every GitHub repo to `/Users/Shared/agent/repos/clone/<ORG>/<repo>`; reuse existing clones; an explicit user path takes precedence. |
+| A | [Repository Management](articles/A-repository-management/ARTICLE.md) | How agents manage Git repositories for local development: clone every GitHub repo to `/Users/Shared/agent/repos/clone/<ORG>/<repo>` and reuse it; follow each repo's conventions and pause on conflicts; branch, commit, sync, and push safely; keep worktrees under one root; clean up only merged work. |

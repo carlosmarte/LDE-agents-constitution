@@ -7,7 +7,9 @@
 
 Repositories used for local development should be predictable and safe. Every agent and every person on this machine should be able to find any repository without searching, the same repository should never exist twice in different places, and work done in one session should be visible to, and protected for, the next.
 
-The current sections cover where repositories are cloned, how existing clones are reused, and how local work in them is protected. Other parts of repository management are added to this article as new sections by amendment.
+Sections 1 to 4 cover where repositories are cloned and how existing clones are reused and protected. Sections 6 to 12 cover how agents work in any local repository: following its conventions, branches, commits, syncing, pushing, worktrees, and cleanup. Other parts of repository management are added to this article as new sections by amendment.
+
+This article covers how repository actions are carried out. It does not decide who may approve them; that belongs to a separate article.
 
 Terms used here are defined in [Definitions.md](Definitions.md). The concrete rules that enforce each clause are in [laws/](laws/), and scripts and how-tos that carry them out are in [procedures/](procedures/).
 
@@ -35,3 +37,39 @@ Terms used here are defined in [Definitions.md](Definitions.md). The concrete ru
 1. This Article applies to Git repositories that agents clone, open, or change for local development on this machine.
 2. Sections 1 to 4 apply to repositories hosted on GitHub (`github.com`), however they are cloned, including `git clone`, `gh repo clone`, and IDE or agent tools.
 3. It applies to every agent session, including scratch or temporary sessions. A temporary working directory MUST NOT be a reason to clone elsewhere.
+
+## Section 6 — Repository conventions
+
+1. An agent MUST follow a repository's own conventions where they exist.
+2. When following a repository convention would break a clause of this Article, the agent MUST pause before acting, explain the conflict to the user, and wait for their feedback.
+3. When no user can answer, the agent MUST skip the conflicting step, do nothing irreversible, and report the conflict as its result.
+
+## Section 7 — Branches
+
+1. Before its first change in a task, an agent on the default branch MUST ask the user whether to create a new branch or stay on the default branch. The answer holds for the rest of that task.
+2. When the repository has no branch naming convention, new branch names MUST follow a single shared format.
+
+## Section 8 — Commits
+
+1. When the repository has no commit message convention, commit messages MUST follow a single shared format that states what changed and why.
+2. Before every commit, an agent MUST check the staged changes for secrets. If it finds any, it MUST NOT commit, and MUST report what it found.
+
+## Section 9 — Syncing
+
+1. Updating a branch from its upstream MUST NOT create a merge commit or rewrite history. If that is not possible, the agent MUST pause and ask the user.
+2. Bringing the default branch's new commits into another branch MUST use a merge, unless a repository convention calls for rebase. If the merge or rebase has conflicts, the agent MUST pause and ask the user.
+
+## Section 10 — Pushing
+
+1. An agent MUST push only the branch it is working on, by name. It MUST NOT push every branch, every tag, or a mirror unless the task asks for it.
+
+## Section 11 — Worktrees
+
+1. A worktree that an agent creates itself MUST live under the worktree root, at a path derived only from the repository and the branch.
+2. Worktrees that a tool creates and manages on its own are exempt from Clause 1.
+
+## Section 12 — Cleanup
+
+1. Cleanup MAY remove only work that is saved elsewhere: local branches already merged into the default branch, and agent-created worktrees whose branch is merged and which have no uncommitted changes.
+2. Cleanup MUST NOT remove a clone.
+3. Anything with unmerged, unpushed, or uncommitted work MUST be left in place and reported to the user.
