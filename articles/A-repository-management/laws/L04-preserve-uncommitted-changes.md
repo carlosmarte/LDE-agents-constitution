@@ -9,4 +9,6 @@ Before any command that could change files in an existing clone (`pull`, `checko
 
 `git fetch` changes no working files and MAY always run.
 
+Running one of the commands in point 1 anyway is a destructive action. It needs the user's approval for that action, as [B-L03](../../B-user-authority/laws/L03-destructive-actions.md) requires.
+
 **Test:** the uncommitted changes reported before an agent's work are still present afterwards, unless the user approved changing them.
