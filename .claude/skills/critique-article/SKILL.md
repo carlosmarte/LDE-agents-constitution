@@ -90,5 +90,6 @@ Follow AGENTS.md exactly:
 - **New article:** create `articles/<X>-<name>/` with `ARTICLE.md`, `Definitions.md`, `laws/`, `procedures/`, and `amendments/<X>1-adopt-article.md`. Put `.gitkeep` in any empty folder. Add a row to the articles table in README.md.
 - **Amendment:** change the existing files and add the next `amendments/<X><n>-<name>.md` record (for example `A3` after `A2`), listing every clause and law changed.
 - **Scripts:** make them executable, and run them against at least one passing and one failing case before reporting them done.
+- **CONSTITUTION.md:** after any change to an `ARTICLE.md`, run `scripts/build-constitution.sh`. Never edit `CONSTITUTION.md` by hand.
 
 Then run the AGENTS.md checklist, report each item's result, and list the files written. Do not commit or push unless the user asks.

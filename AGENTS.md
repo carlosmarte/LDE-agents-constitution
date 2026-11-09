@@ -40,6 +40,8 @@ The constitution is the base, not the rulebook. It MUST NOT grow past 26 article
 | `procedures/` | Scripts, how-tos, and checks that carry out, validate, or defend a law. Each procedure MUST name the law(s) it serves. | New obligations. A procedure can only implement what a law already requires. |
 | `amendments/` | One record per change to the article. | Edits to past records. Amendments are append-only. |
 | `Definitions.md` | Terms used in this article that are not common usage or defined in BCP 14. | Redefinitions of BCP 14 key words or of terms another article already defines. |
+| `CONSTITUTION.md` | Every `ARTICLE.md`, A to Z, in one generated file. | Hand edits. See [Section 5](#5-changing-the-constitution). |
+| `scripts/` | Tooling for this repository itself. | Rules or procedures that bind agents. Those go in an article. |
 
 ## 3. Citations
 
@@ -89,6 +91,15 @@ Every change to an `ARTICLE.md` or a law MUST include a new amendment record in 
 - Typo and formatting fixes that do not change meaning do not need an amendment.
 - Repealed articles and laws stay in place, marked `**Status:** Repealed`, so their citations still resolve.
 
+### Rebuilding CONSTITUTION.md
+
+`CONSTITUTION.md` is generated from every `ARTICLE.md` by `scripts/build-constitution.sh`. If it ever disagrees with an `ARTICLE.md`, the `ARTICLE.md` wins and the file MUST be rebuilt.
+
+- Every change that adds, edits, or removes an `ARTICLE.md` MUST include the rebuilt `CONSTITUTION.md` in the same commit.
+- `CONSTITUTION.md` MUST NOT be edited by hand. The next rebuild overwrites it.
+- Run `scripts/build-constitution.sh` to rebuild it, and `scripts/build-constitution.sh --check` to confirm it is current without changing anything.
+- In Claude Code, a hook in `.claude/settings.json` rebuilds it after each file edit or shell command. Other agents MUST run the script themselves.
+
 ## 6. Checklist before committing
 
 - [ ] Every article folder has `ARTICLE.md`, `Definitions.md`, `laws/`, `procedures/`, `amendments/`.
@@ -96,5 +107,6 @@ Every change to an `ARTICLE.md` or a law MUST include a new amendment record in 
 - [ ] Every procedure has an `Implements:` line pointing to a real law.
 - [ ] Every meaning-changing edit has a new amendment record.
 - [ ] The README articles table lists every article.
+- [ ] `scripts/build-constitution.sh --check` exits 0.
 - [ ] There are at most 26 articles, each with its own letter.
 - [ ] No article letter or citation number was reused or reassigned.
