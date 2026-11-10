@@ -18,7 +18,7 @@ articles/
     amendments/       # record of how the article was added or changed
 ```
 
-- `<X>` is the article's letter: one uppercase letter, `A` to `Z`, assigned in alphabetical order. A letter MUST NOT be reused or reassigned once used, even if the article is repealed.
+- `<X>` is the article's letter: one uppercase letter, `A` to `Z`, assigned in alphabetical order. A letter MUST NOT be reused or reassigned once used, even if the article is repealed. The one exception is an archived article, whose letter is free again (see [Section 5](#5-changing-the-constitution)).
 - `<name>` is lowercase kebab-case, for example `A-repository-management`.
 - All five entries MUST exist. An empty folder holds a `.gitkeep` file.
 - Content MUST NOT be placed directly in `articles/` as loose files.
@@ -99,7 +99,8 @@ The user MAY set an article aside without repealing it. An archived article leav
 - Move the whole folder to `.archived/<X>-<name>-<timestamp>/`, where `<timestamp>` is the UTC time of the move as `YYYYMMDDTHHMMSSZ`. The timestamp keeps it from colliding with a later article or archive of a similar name.
 - Archived files are kept as they were. Links that leave the folder are not updated.
 - In the same commit, amend anything in force that depends on the article, remove its row from the README articles table, and rebuild `CONSTITUTION.md`.
-- An archived article's letter stays used, and it counts toward the 26. Restoring the article returns it to that letter.
+- Archiving frees the article's letter: it is available to the next new article and no longer counts toward the 26. Citations in older records keep meaning the archived article.
+- To restore an article whose letter has since been taken, give it the next unused letter and record the change in an amendment.
 
 ### Rebuilding CONSTITUTION.md
 
@@ -119,4 +120,4 @@ The user MAY set an article aside without repealing it. An archived article leav
 - [ ] The README articles table lists every article.
 - [ ] `scripts/build-constitution.sh --check` exits 0.
 - [ ] There are at most 26 articles, each with its own letter.
-- [ ] No article letter or citation number was reused or reassigned.
+- [ ] No article letter or citation number was reused or reassigned, except a letter freed by archiving.
