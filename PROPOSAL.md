@@ -24,13 +24,13 @@ Any agent on the machine can read the same articles and reach the same understan
 
 ## What it serves
 
-- **The user** can state an expectation once and rely on every agent to honor it, and keeps authority over actions that affect others or cannot be undone.
+- **The user** can state an expectation once and rely on every agent to honor it.
 - **Agents** get clear, consistent guidance in place of guesswork, including what to do when they are unsure or no one is available to ask.
 - **Work across projects** stays predictable, because agents act the same way from one project and session to the next.
 
 ## Scope
 
-**The constitution covers** general conduct that holds for any agent in any project, such as how agents manage repositories and whose approval counts.
+**The constitution covers** general conduct that holds for any agent in any project, such as how agents manage repositories.
 
 **The constitution does not cover** project-specific governance. A project's architecture, coding standards, workflows, and domain rules stay in that project's own files.
 

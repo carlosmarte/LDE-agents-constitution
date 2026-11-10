@@ -42,6 +42,7 @@ The constitution is the base, not the rulebook. It MUST NOT grow past 26 article
 | `Definitions.md` | Terms used in this article that are not common usage or defined in BCP 14. | Redefinitions of BCP 14 key words or of terms another article already defines. |
 | `CONSTITUTION.md` | Every `ARTICLE.md`, A to Z, in one generated file. | Hand edits. See [Section 5](#5-changing-the-constitution). |
 | `scripts/` | Tooling for this repository itself. | Rules or procedures that bind agents. Those go in an article. |
+| `.archived/` | Articles set aside and not in force. See [Section 5](#5-changing-the-constitution). | Anything still in force. |
 
 ## 3. Citations
 
@@ -90,6 +91,15 @@ Every change to an `ARTICLE.md` or a law MUST include a new amendment record in 
 - Adding a new article means taking the next unused letter, creating its folder with all five entries, an amendment `<X>1` that records its adoption, and a row in the articles table in [README.md](README.md).
 - Typo and formatting fixes that do not change meaning do not need an amendment.
 - Repealed articles and laws stay in place, marked `**Status:** Repealed`, so their citations still resolve.
+
+### Archiving an article
+
+The user MAY set an article aside without repealing it. An archived article leaves `articles/` and is not in force.
+
+- Move the whole folder to `.archived/<X>-<name>-<timestamp>/`, where `<timestamp>` is the UTC time of the move as `YYYYMMDDTHHMMSSZ`. The timestamp keeps it from colliding with a later article or archive of a similar name.
+- Archived files are kept as they were. Links that leave the folder are not updated.
+- In the same commit, amend anything in force that depends on the article, remove its row from the README articles table, and rebuild `CONSTITUTION.md`.
+- An archived article's letter stays used, and it counts toward the 26. Restoring the article returns it to that letter.
 
 ### Rebuilding CONSTITUTION.md
 

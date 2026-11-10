@@ -25,6 +25,6 @@ Immediately before every commit, an agent MUST check the staged changes, for exa
 
 If anything matches, the agent MUST NOT commit. It MUST report each file and pattern that matched, without printing the secret's value, and leave the changes staged.
 
-A pattern match can be a false alarm, such as a test fixture or documentation example. Continuing to commit past a match is a destructive action: it needs the user's approval for that commit, naming the files, as [B-L03](../../B-user-authority/laws/L03-destructive-actions.md) requires.
+A pattern match can be a false alarm, such as a test fixture or documentation example. This law decides only that the agent stops and reports; it does not decide who may tell it to continue.
 
 **Test:** no commit made by an agent adds a file or line matching the patterns above.
