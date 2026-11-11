@@ -94,7 +94,7 @@ Every change to an `ARTICLE.md` or a law MUST include a new amendment record in 
 
 ### Archiving an article
 
-The user MAY set an article aside without repealing it. An archived article leaves `articles/` and is not in force.
+The user MAY set an article aside without repealing it. An archived article leaves `articles/` and is not in force. Follow [.claude/skills/manage-article-archive/SKILL.md](.claude/skills/manage-article-archive/SKILL.md) (`/manage-article-archive` in Claude Code) to do it.
 
 - Move the whole folder to `.archived/<X>-<name>-<timestamp>/`, where `<timestamp>` is the UTC time of the move as `YYYYMMDDTHHMMSSZ`. The timestamp keeps it from colliding with a later article or archive of a similar name.
 - Archived files are kept as they were. Links that leave the folder are not updated.
@@ -110,6 +110,21 @@ The user MAY set an article aside without repealing it. An archived article leav
 - `CONSTITUTION.md` MUST NOT be edited by hand. The next rebuild overwrites it.
 - Run `scripts/build-constitution.sh` to rebuild it, and `scripts/build-constitution.sh --check` to confirm it is current without changing anything.
 - In Claude Code, a hook in `.claude/settings.json` rebuilds it after each file edit or shell command. Other agents MUST run the script themselves.
+
+### Naming utility skills
+
+A utility skill carries out one maintenance action on the constitution. It lives in `.claude/skills/` and MUST be named `manage-<target>-<action>`, so that typing `/manage-` lists them all.
+
+| Part | Meaning | Examples |
+|---|---|---|
+| `<target>` | What the skill acts on, singular. | `article`, `law`, `amendment` |
+| `<action>` | What it does, in lowercase kebab-case. | `archive`, `remove-section` |
+
+- The `name:` in `SKILL.md` MUST match the folder name.
+- A utility skill carries out what this file requires. It MUST NOT add new rules, and this file wins if they disagree.
+- Skills that are not a single maintenance action, such as `critique-article`, do not use the prefix.
+
+For example, `manage-article-archive` archives an article, and a skill that removes a section from an article would be `manage-article-remove-section`.
 
 ## 6. Checklist before committing
 
