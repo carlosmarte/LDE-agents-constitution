@@ -43,6 +43,7 @@ The constitution is the base, not the rulebook. It MUST NOT grow past 26 article
 | `CONSTITUTION.md` | Every `ARTICLE.md`, A to Z, in one generated file. | Hand edits. See [Section 5](#5-changing-the-constitution). |
 | `scripts/` | Tooling for this repository itself. | Rules or procedures that bind agents. Those go in an article. |
 | `.archived/` | Articles set aside and not in force. See [Section 5](#5-changing-the-constitution). | Anything still in force. |
+| `proposals/` | Ideas, comments, and draft sections waiting for group discussion, one note per file. See [proposals/README.md](proposals/README.md). | Anything in force. A proposal takes effect only through an amendment. |
 
 ## 3. Citations
 
@@ -74,6 +75,8 @@ If two parts of an article disagree, the higher one wins and the lower one MUST 
 ## 5. Changing the constitution
 
 To shape a rough idea into a new article or an amendment, follow [.claude/skills/critique-article/SKILL.md](.claude/skills/critique-article/SKILL.md) (`/critique-article` in Claude Code). It checks whether the constitution already covers the idea, then interviews the user before writing anything.
+
+Ideas not yet ready for that, or that need a group decision first, go in [proposals/](proposals/README.md) as notes to discuss in a meeting.
 
 Every change to an `ARTICLE.md` or a law MUST include a new amendment record in the same commit, with:
 

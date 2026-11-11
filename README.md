@@ -6,6 +6,7 @@ The constitution for AI agents working in this local development environment (LD
 
 - **AI systems:** treat every article marked **Adopted** as a hard rule. Where an article and a general default disagree, the article wins. The user's explicit instruction in the current conversation wins over an article, for that instance only.
 - **Editing this repository:** follow [AGENTS.md](AGENTS.md), which defines how articles, laws, procedures, amendments, and definitions are laid out.
+- **Suggesting a change:** add a note to [proposals/](proposals/README.md) for discussion at a group meeting. Proposals are not in force.
 - **Humans:** point your agent's system prompt, `CLAUDE.md`, `AGENTS.md`, or equivalent at this repository.
 
 The key words MUST, MUST NOT, SHOULD, and MAY are used as described in [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119).
